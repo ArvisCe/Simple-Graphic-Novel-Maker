@@ -24,7 +24,7 @@ body {
 }
 
 .dialogue {
-    margin-top: 60vmin;
+    margin-top: 50vmin;
     background-color: rgba(10,10,10,0.8);
     width: 60%;
     border-radius: 7px;
@@ -47,9 +47,10 @@ body {
 .choice {
     margin-top: 10px;
     border-radius: 5px;
-    width: 15%;
+    min-width: 15%;
     aspect-ratio: 7/3;
-    max-height: 50px;
+    height: 50px;
+    vertical-align:bottom;
     border-style: none;
     background-color: darkgray;
 }

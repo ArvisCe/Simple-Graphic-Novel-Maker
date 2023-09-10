@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Your game</title>
+</head>
+<body>
+    <div class="game-window" id="game-window">
+
+    </div>
+</body>
+</html>
+<script type="module" src="scenes.js"></script>
+<script>
+    class Scene{
+    constructor(talker, text, name){
+        this.talker = talker;
+        this.text = text;
+        this.buttons = [];
+        this.image = "";
+        this.scene_name = name;
+    }
+    add_button(button){
+        this.buttons.push(button);
+    }
+    set_image(url){
+        this.image = "url("+url+")";
+    }
+    switch_scene(){
+        setScreenImage(this.image);
+        resetScreen(this.talker, this.text, this.buttons);
+    }
+    name(){
+        return this.scene_name;
+    }
+}
+
+const scenes_arr = [];
+
+function create_scene(scene){
+    scenes_arr.push(scene);
+}
+
+function setScreenImage(image){
+    document.getElementById("game-window").backgroundImage = "url(images/"+image+")";;
+}
+
+function resetScreen(name,dialogue,buttons){
+    const gameWindow = document.getElementById("game-window");
+    var text = '<center>';
+    text += add_dialogue(name,dialogue,buttons);
+    text += add_buttons(buttons);
+    gameWindow.innerHTML = text + "</center>";
+}       
+function add_dialogue(speaker,dialogue){
+    var text = "<div class='dialogue'>";
+    text += "<div class='name'>";
+    text += speaker;
+    text += "</div>";
+    text += "<div class='text'>";
+    text += dialogue;
+    text += "</div>";
+    return text + "</div>" ;
+}
+function add_buttons(buttons){
+    var text = "";
+    for(var i = 0; i < buttons.length; i++){
+        text += `<button class='choice' onclick="go_to_scene('${buttons[i][0]}')">${buttons[i][1]}</button> `;
+    }
+    return text;
+}
+function go_to_scene(scene_name){
+        for(var i = 0; i < scenes_arr.length; i++){
+            scene = scenes_arr[i];
+            if(scene.name() === scene_name){
+                scene.switch_scene();
+                return 0;
+            }
+        }    
+        alert("no scene with that name");
+    }
+</script>
