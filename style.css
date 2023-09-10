@@ -7,10 +7,8 @@ body {
 
 .game-window {
     width: 90vw;
-    margin-left: 5vw;
     height: 90vmin;
-    margin-top: 5vmin;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -18,17 +16,26 @@ body {
     background-position: center;
     background-size:contain;
     background-size:cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5vh;
     /* background-size cover and contain both look fine but are a matter of prefference. change them
     around as you wish */
 
 }
 
 .dialogue {
-    margin-top: 50vmin;
     background-color: rgba(10,10,10,0.8);
     width: 60%;
     border-radius: 7px;
     padding: 10px;
+    position: absolute;
+    bottom: 12vmin;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .name {
@@ -45,7 +52,7 @@ body {
 }
 
 .choice {
-    margin-top: 10px;
+    margin-top: 80vmin;
     border-radius: 5px;
     min-width: 15%;
     aspect-ratio: 7/3;
@@ -53,6 +60,7 @@ body {
     vertical-align:bottom;
     border-style: none;
     background-color: darkgray;
+    
 }
 .choice:hover{
     transition:0.2s ease-in-out;
